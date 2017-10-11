@@ -21,7 +21,7 @@
         {
             var car = new Car(new SuperfastEngine())
             {
-                MaxSpeed = 10
+                MaxSpeed = 5
             };
 
             Assert.Equal(10, car.RunWithMaxSpeed());
