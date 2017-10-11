@@ -5,7 +5,7 @@
 
     public class BridgeTests
     {
-        [Fact(DisplayName = "Bridge: Car with normal engine")]
+        [Fact(DisplayName = "Bridge: Vehicle with normal engine")]
         public void CarWithNormalEngine()
         {
             var car = new Car(new NormalEngine())
@@ -16,7 +16,7 @@
             Assert.Equal(5, car.RunWithMaxSpeed());
         }
 
-        [Fact(DisplayName = "Bridge: Car with super fast engine")]
+        [Fact(DisplayName = "Bridge: Vehicle with super fast engine")]
         public void CarWithSuperfastengine()
         {
             var car = new Car(new SuperfastEngine())

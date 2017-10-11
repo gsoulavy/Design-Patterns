@@ -1,19 +1,14 @@
 ﻿namespace Structural.Bridge
 {
-    public class Car
+    public class Car : Vehicle
     {
-        private IEngine _engine;
-
-        public Car(IEngine engine)
+        public Car(IEngine engine) : base(engine)
         {
-            _engine = engine;
         }
 
-        public int MaxSpeed { get; set; }
-
-        public int RunWithMaxSpeed()
+        public override int RunWithMaxSpeed()
         {
-            return _engine.GetMaxSpeed(MaxSpeed);
+            return Engine.GetMaxSpeed(MaxSpeed);
         }
     }
 }
