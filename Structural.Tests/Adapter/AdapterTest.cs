@@ -16,7 +16,7 @@
         [Fact(DisplayName = "Adapter: Driver with bike")]
         public void DriverWithBike()
         {
-            var driver = new Driver(new BicycleAdapter());
+            var driver = new Driver(new ManforceAdapter(new Bicycle()));
 
             Assert.Equal("Ride the bike", driver.Move());
         }

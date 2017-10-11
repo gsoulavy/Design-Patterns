@@ -1,6 +1,6 @@
 ﻿namespace Structural.Adapter
 {
-    public interface IVehicle
+    public interface IEngine
     {
         string RunEngine();
     }

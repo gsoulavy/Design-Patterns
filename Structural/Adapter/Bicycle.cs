@@ -2,7 +2,7 @@
 {
     using System;
 
-    public class Bicycle
+    public class Bicycle : IManforce
     {
         public string Ride()
         {

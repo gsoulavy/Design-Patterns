@@ -2,15 +2,15 @@
 {
     public class Driver
     {
-        private readonly IVehicle _vehicle;
+        private readonly IEngine _engine;
 
-        public Driver(IVehicle vehicle)
+        public Driver(IEngine engine)
         {
-            _vehicle = vehicle;
+            _engine = engine;
         }
         public string Move()
         {
-            return _vehicle.RunEngine();
+            return _engine.RunEngine();
         }
     }
 }
