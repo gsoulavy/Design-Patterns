@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Structural", "Structural\St
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Behavioral", "Behavioral\Behavioral.csproj", "{141FAB0C-CE64-41F6-B92C-A6FE0A176EB7}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Structural.Tests", "Structural.Tests\Structural.Tests.csproj", "{2445538D-FD73-478E-83C1-CB7A0F57C703}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{141FAB0C-CE64-41F6-B92C-A6FE0A176EB7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{141FAB0C-CE64-41F6-B92C-A6FE0A176EB7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{141FAB0C-CE64-41F6-B92C-A6FE0A176EB7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2445538D-FD73-478E-83C1-CB7A0F57C703}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2445538D-FD73-478E-83C1-CB7A0F57C703}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2445538D-FD73-478E-83C1-CB7A0F57C703}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2445538D-FD73-478E-83C1-CB7A0F57C703}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
