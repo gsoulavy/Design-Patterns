@@ -3,7 +3,7 @@
     using Structural.Adapter;
     using Xunit;
 
-    public class AdapterTest
+    public class AdapterTests
     {
         [Fact(DisplayName = "Adapter: Driver with car")]
         public void DriverWithCar()
