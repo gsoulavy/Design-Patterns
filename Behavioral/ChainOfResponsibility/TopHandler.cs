@@ -4,7 +4,9 @@
 
     internal class TopHandler : IGearHandler
     {
-        private TopHandler() { }
+        private TopHandler()
+        {
+        }
 
         public static IGearHandler Instance { get; } = new TopHandler();
 

@@ -8,6 +8,7 @@
         {
             _engine = engine;
         }
+
         public string Move()
         {
             return _engine.RunEngine();

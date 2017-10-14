@@ -2,7 +2,7 @@
 {
     public interface IGear
     {
-        GearResponse Monitor(Rotation rotation);
         string Name { get; set; }
+        GearResponse Monitor(Rotation rotation);
     }
 }

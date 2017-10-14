@@ -2,6 +2,10 @@
 {
     public class EngineDown : CommandBase
     {
+        public EngineDown(ICarComponent carComponent) : base(carComponent)
+        {
+        }
+
         public override void Execute()
         {
             CarComponent.Down();
@@ -11,7 +15,5 @@
         {
             CarComponent.Up();
         }
-
-        public EngineDown(ICarComponent carComponent) : base(carComponent) { }
     }
 }

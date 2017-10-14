@@ -8,6 +8,5 @@
         public double MaxSpeed { get; set; }
         public EngineType Engine { get; set; }
         public WheelType Wheels { get; set; }
-
     }
 }

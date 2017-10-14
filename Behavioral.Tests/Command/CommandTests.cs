@@ -5,6 +5,53 @@
 
     public class CommandTests
     {
+        [Fact(DisplayName = "Command: Turn on and off with executor")]
+        public void TurnOnAndOffWithExecutor()
+        {
+            var engine = new CarEngine();
+            var executor = new EngineExecutor(engine);
+            Assert.False(engine.IsEngineOn);
+            executor.Run("On");
+            Assert.True(engine.IsEngineOn);
+            executor.Run("Off");
+            Assert.False(engine.IsEngineOn);
+        }
+
+
+        [Fact(DisplayName = "Command: Turn on, up, down and off with executor")]
+        public void TurnOnAndUpAndDownWithExecutor()
+        {
+            var engine = new CarEngine();
+            var executor = new EngineExecutor(engine);
+            Assert.False(engine.IsEngineOn);
+            executor.Run("On");
+            Assert.True(engine.IsEngineOn);
+            Assert.Equal(0, engine.Rpm);
+            executor.Run("Up");
+            Assert.Equal(1, engine.Rpm);
+            executor.Run("Up");
+            Assert.Equal(2, engine.Rpm);
+            executor.Run("Down");
+            Assert.Equal(1, engine.Rpm);
+            Assert.True(engine.IsEngineOn);
+            executor.Run("Off");
+            Assert.False(engine.IsEngineOn);
+            Assert.Equal(0, engine.Rpm);
+        }
+
+        [Fact(DisplayName = "Command: Turn on and up with executor")]
+        public void TurnOnAndUpWithExecutor()
+        {
+            var engine = new CarEngine();
+            var executor = new EngineExecutor(engine);
+            Assert.False(engine.IsEngineOn);
+            executor.Run("On");
+            Assert.True(engine.IsEngineOn);
+            Assert.Equal(0, engine.Rpm);
+            executor.Run("Up");
+            Assert.Equal(1, engine.Rpm);
+        }
+
         [Fact(DisplayName = "Command: Turn on")]
         public void TurnOnTest()
         {
@@ -32,31 +79,6 @@
             Assert.True(engine.IsEngineOn);
         }
 
-        [Fact(DisplayName = "Command: Turn on and off with executor")]
-        public void TurnOnAndOffWithExecutor()
-        {
-            var engine = new CarEngine();
-            var executor = new EngineExecutor(engine);
-            Assert.False(engine.IsEngineOn);
-            executor.Run("On");
-            Assert.True(engine.IsEngineOn);
-            executor.Run("Off");
-            Assert.False(engine.IsEngineOn);
-        }
-
-        [Fact(DisplayName = "Command: Turn on and up with executor")]
-        public void TurnOnAndUpWithExecutor()
-        {
-            var engine = new CarEngine();
-            var executor = new EngineExecutor(engine);
-            Assert.False(engine.IsEngineOn);
-            executor.Run("On");
-            Assert.True(engine.IsEngineOn);
-            Assert.Equal(0, engine.Rpm);
-            executor.Run("Up");
-            Assert.Equal(1, engine.Rpm);
-        }
-
         [Fact(DisplayName = "Command: Up with executor")]
         public void UpWithExecutor()
         {
@@ -66,29 +88,6 @@
             Assert.Equal(0, engine.Rpm);
             executor.Run("Up");
             Assert.Equal(0, engine.Rpm);
-        }
-
-
-        [Fact(DisplayName = "Command: Turn on, up, down and off with executor")]
-        public void TurnOnAndUpAndDownWithExecutor()
-        {
-            var engine = new CarEngine();
-            var executor = new EngineExecutor(engine);
-            Assert.False(engine.IsEngineOn);
-            executor.Run("On");
-            Assert.True(engine.IsEngineOn);
-            Assert.Equal(0, engine.Rpm);
-            executor.Run("Up");
-            Assert.Equal(1, engine.Rpm);
-            executor.Run("Up");
-            Assert.Equal(2, engine.Rpm);
-            executor.Run("Down");
-            Assert.Equal(1, engine.Rpm);
-            Assert.True(engine.IsEngineOn);
-            executor.Run("Off");
-            Assert.False(engine.IsEngineOn);
-            Assert.Equal(0, engine.Rpm);
-
         }
     }
 }

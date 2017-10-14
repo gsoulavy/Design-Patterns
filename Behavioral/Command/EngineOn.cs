@@ -2,6 +2,10 @@
 {
     public class EngineOn : CommandBase
     {
+        public EngineOn(ICarComponent carComponent) : base(carComponent)
+        {
+        }
+
         public override void Execute()
         {
             CarComponent.On();
@@ -11,7 +15,5 @@
         {
             CarComponent.Off();
         }
-
-        public EngineOn(ICarComponent carComponent) : base(carComponent) { }
     }
 }

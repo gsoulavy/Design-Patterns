@@ -6,6 +6,7 @@
         {
             Rpm = rotation;
         }
+
         public double Rpm { get; }
 
         public static implicit operator Rotation(double rotation)
