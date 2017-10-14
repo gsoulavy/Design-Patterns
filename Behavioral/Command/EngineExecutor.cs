@@ -19,7 +19,7 @@
             command.Execute();
         }
 
-        private IEnumerable<ICommandFactory<ICommand>> GetFactories(ICarComponent component)
+        private static IEnumerable<ICommandFactory<ICommand>> GetFactories(ICarComponent component)
         {
             return new ICommandFactory<ICommand>[]
             {
