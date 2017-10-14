@@ -3,11 +3,6 @@
     using System.Collections.Generic;
     using System.Linq;
 
-    public interface ICommandParser
-    {
-        ICommand Parse(string argument);
-    }
-
     public class CommandParser : ICommandParser
     {
         private readonly IEnumerable<ICommandFactory<ICommand>> _commandFactories;
@@ -19,10 +14,7 @@
 
         public ICommand Parse(string argument)
         {
-            var requestedCommand = argument;
-
-            var commandFactory = FindRequestedCommand(requestedCommand);
-            return commandFactory.MakeCommand();
+            return FindRequestedCommand(argument).MakeCommand();
         }
 
         private ICommandFactory<ICommand> FindRequestedCommand(string requestedCommand)
