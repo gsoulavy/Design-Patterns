@@ -1,11 +1,5 @@
 ﻿namespace Behavioral.ChainOfResponsibility
 {
-    public interface IGearHandler
-    {
-        void SetNextHandler(GearHandler nextGear);
-        (GearResponse response, string gearName) ApplySpeed(Rotation speed);
-    }
-
     public class GearHandler : IGearHandler
     {
         private readonly IGear _gear;
@@ -16,7 +10,7 @@
             _gear = gear;
         }
 
-        public void SetNextHandler(GearHandler nextHandler)
+        public void SetNextHandler(IGearHandler nextHandler)
         {
             _nextHandler = nextHandler;
         }

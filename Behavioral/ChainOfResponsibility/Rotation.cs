@@ -1,6 +1,6 @@
 ﻿namespace Behavioral.ChainOfResponsibility
 {
-    public class Rotation : IRotation
+    public class Rotation
     {
         public Rotation(double rotation)
         {

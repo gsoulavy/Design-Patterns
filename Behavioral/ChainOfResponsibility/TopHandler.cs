@@ -8,7 +8,7 @@
 
         public static IGearHandler Instance { get; } = new TopHandler();
 
-        public void SetNextHandler(GearHandler nextGear)
+        public void SetNextHandler(IGearHandler nextGear)
         {
             throw new InvalidOperationException();
         }
