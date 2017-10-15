@@ -19,8 +19,9 @@
 
         private ICommandFactory<ICommand> FindRequestedCommand(string requestedCommand)
         {
-            return _commandFactories
+            var findRequestedCommand = _commandFactories
                 .FirstOrDefault(command => command.CommandName == requestedCommand);
+            return findRequestedCommand ?? new CommandFactory<NullCommand>(null) { CommandName = requestedCommand };
         }
     }
 }
