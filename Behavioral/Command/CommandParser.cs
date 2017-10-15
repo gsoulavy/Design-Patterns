@@ -14,7 +14,7 @@
 
         public ICommand Parse(string argument)
         {
-            return FindRequestedCommand(argument).MakeCommand();
+            return FindRequestedCommand(argument).Create();
         }
 
         private ICommandFactory<ICommand> FindRequestedCommand(string requestedCommand)

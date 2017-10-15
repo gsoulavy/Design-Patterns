@@ -4,6 +4,6 @@
     {
         string CommandName { get; set; }
 
-        T MakeCommand();
+        T Create();
     }
 }

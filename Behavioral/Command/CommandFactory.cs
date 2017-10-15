@@ -13,7 +13,7 @@
 
         public string CommandName { get; set; }
 
-        public T MakeCommand()
+        public T Create()
         {
             return (T) Activator.CreateInstance(typeof(T), _component);
         }
