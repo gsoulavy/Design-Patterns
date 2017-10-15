@@ -23,10 +23,10 @@
         {
             return new ICommandFactory<ICommand>[]
             {
-                new CommandFactory<EngineOn>(component) {CommandName = "On"},
-                new CommandFactory<EngineOff>(component) {CommandName = "Off"},
-                new CommandFactory<EngineUp>(component) {CommandName = "Up"},
-                new CommandFactory<EngineDown>(component) {CommandName = "Down"}
+                new CommandFactory<EngineOn>(component) {Name = "On"},
+                new CommandFactory<EngineOff>(component) {Name = "Off"},
+                new CommandFactory<EngineUp>(component) {Name = "Up"},
+                new CommandFactory<EngineDown>(component) {Name = "Down"}
             };
         }
     }

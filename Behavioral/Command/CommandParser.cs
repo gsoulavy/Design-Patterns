@@ -14,14 +14,14 @@
 
         public ICommand Parse(string argument)
         {
-            return FindRequestedCommand(argument).MakeCommand();
+            return FindRequestedCommand(argument).Create();
         }
 
         private ICommandFactory<ICommand> FindRequestedCommand(string requestedCommand)
         {
             var findRequestedCommand = _commandFactories
-                .FirstOrDefault(command => command.CommandName == requestedCommand);
-            return findRequestedCommand ?? new CommandFactory<NullCommand>(null) { CommandName = requestedCommand };
+                .FirstOrDefault(command => command.Name == requestedCommand);
+            return findRequestedCommand ?? new CommandFactory<NullCommand>(null) { Name = requestedCommand };
         }
     }
 }

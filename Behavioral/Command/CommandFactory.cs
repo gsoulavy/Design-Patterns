@@ -11,9 +11,9 @@
             _component = component;
         }
 
-        public string CommandName { get; set; }
+        public string Name { get; set; }
 
-        public T MakeCommand()
+        public T Create()
         {
             return (T) Activator.CreateInstance(typeof(T), _component);
         }

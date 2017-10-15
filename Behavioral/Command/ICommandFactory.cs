@@ -2,8 +2,8 @@
 {
     public interface ICommandFactory<out T>
     {
-        string CommandName { get; set; }
+        string Name { get; set; }
 
-        T MakeCommand();
+        T Create();
     }
 }
