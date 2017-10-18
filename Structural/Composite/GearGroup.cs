@@ -1,6 +1,5 @@
 ﻿namespace Structural.Composite
 {
-    using System;
     using System.Collections.Generic;
     using System.Linq;
 
@@ -21,19 +20,14 @@
             {
                 var individualBrakeForce = value / Gears.Count();
                 foreach (var gear in Gears)
-                {
                     gear.BrakeForce = individualBrakeForce;
-                }
-
             }
         }
 
         public void Brake()
         {
             foreach (var gear in Gears)
-            {
                 gear.Brake();
-            }
         }
     }
 }
