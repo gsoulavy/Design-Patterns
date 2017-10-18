@@ -3,9 +3,9 @@
     using System.Collections.Generic;
     using System.Linq;
 
-    public class GearGroup : IBrakeable
+    public class WheelGroup : IBrakeable
     {
-        public GearGroup()
+        public WheelGroup()
         {
             Gears = new List<IBrakeable>();
         }

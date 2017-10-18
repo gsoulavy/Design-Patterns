@@ -11,23 +11,23 @@
         public void CompositeTest()
         {
             const double totalForce = 1500d;
-            var flg = new Gear {Position = "Front Left"};
-            var frg = new Gear {Position = "Front Right"};
-            var mlg = new Gear {Position = "Middle Left"};
-            var mrg = new Gear {Position = "Middle Rigth"};
-            var blg = new Gear {Position = "Rear Left"};
-            var brg = new Gear {Position = "Rear Right"};
-            var rearGears = new GearGroup {Gears = new List<Gear> {blg, brg}};
+            var flwheel = new Wheel {Position = "Front Left"};
+            var frwheel = new Wheel {Position = "Front Right"};
+            var mlwheel = new Wheel {Position = "Middle Left"};
+            var mrwheel = new Wheel {Position = "Middle Rigth"};
+            var rlwheel = new Wheel {Position = "Rear Left"};
+            var rrwheel = new Wheel {Position = "Rear Right"};
+            var rearWheels = new WheelGroup {Gears = new List<Wheel> {rlwheel, rrwheel}};
 
-            new GearGroup
+            new WheelGroup
             {
-                Gears = new List<IBrakeable> {flg, frg, mlg, mrg, rearGears},
+                Gears = new List<IBrakeable> {flwheel, frwheel, mlwheel, mrwheel, rearWheels},
                 BrakeForce = totalForce
             };
 
-            Assert.Equal(300, flg.BrakeForce);
-            Assert.Equal(150, blg.BrakeForce);
-            Assert.Equal(300, rearGears.BrakeForce);
+            Assert.Equal(300, flwheel.BrakeForce);
+            Assert.Equal(150, rlwheel.BrakeForce);
+            Assert.Equal(300, rearWheels.BrakeForce);
         }
     }
 }

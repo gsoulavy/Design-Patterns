@@ -2,14 +2,14 @@
 {
     using System;
 
-    public class Gear : IBrakeable
+    public class Wheel : IBrakeable
     {
         public string Position { get; set; }
         public double BrakeForce { get; set; }
 
         public void Brake()
         {
-            Console.WriteLine($"Gear: {Position}, Brake force: {BrakeForce}.");
+            Console.WriteLine($"Wheel: {Position}, Brake force: {BrakeForce}.");
         }
     }
 }
