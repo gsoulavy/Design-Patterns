@@ -10,7 +10,7 @@
         [Fact(DisplayName = "Composite: Distribute")]
         public void CompositeTest()
         {
-            var totalForce = 1500d;
+            const double totalForce = 1500d;
             var flg = new Gear {Position = "Front Left"};
             var frg = new Gear {Position = "Front Right"};
             var mlg = new Gear {Position = "Middle Left"};
@@ -19,16 +19,11 @@
             var brg = new Gear {Position = "Rear Right"};
             var rearGears = new GearGroup {Gears = new List<Gear> {blg, brg}};
 
-            var gears = new List<IBrakeable> {flg, frg, mlg, mrg, rearGears};
-
-            var totalSplit = gears.Count;
-
-            var amountForEach = totalForce / totalSplit;
-
-            foreach (var brakeable in gears)
+            new GearGroup
             {
-                brakeable.BrakeForce = amountForEach;
-            }
+                Gears = new List<IBrakeable> {flg, frg, mlg, mrg, rearGears},
+                BrakeForce = totalForce
+            };
 
             Assert.Equal(300, flg.BrakeForce);
             Assert.Equal(150, blg.BrakeForce);
