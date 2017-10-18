@@ -16,4 +16,8 @@
     <ProjectReference Include="..\Structural\Structural.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Composite\" />
+  </ItemGroup>
+
 </Project>
