@@ -1,7 +1,6 @@
 ﻿namespace Structural.Tests.Composite
 {
     using System.Collections.Generic;
-    using System.Runtime.InteropServices.ComTypes;
     using Structural.Composite;
     using Xunit;
 
