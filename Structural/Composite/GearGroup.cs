@@ -8,11 +8,11 @@
     {
         public GearGroup()
         {
-            Gears = new List<Gear>();
+            Gears = new List<IBrakeable>();
         }
 
         public string GroupPosition { get; set; }
-        public IEnumerable<Gear> Gears { get; set; }
+        public IEnumerable<IBrakeable> Gears { get; set; }
 
         public double BrakeForce
         {
