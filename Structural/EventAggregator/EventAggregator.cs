@@ -20,37 +20,57 @@
 
         public EventAggregator() : this(typeof(ISubscriber<>))
         {
-            
+
         }
 
         public void Subscribe(object subscriber)
         {
             lock (_lock)
             {
-                var subscriberType = subscriber.GetType();
-                var interfaceGenericTypeDefinitions =
-                    subscriberType.GetInterfaces().Where(i =>
-                        i.IsGenericType && i.GetGenericTypeDefinition() == _subscriberType);
-
-                foreach (var interfaceGenericDefinition in interfaceGenericTypeDefinitions)
+                foreach (var interfaceGenericDefinition in GetInterfaceGenericTypeDefinitions(subscriber.GetType()))
                 {
                     var weakReference = new WeakReference(subscriber);
-                    var subscribers = GetSubscriber(interfaceGenericDefinition);
-                    subscribers.Add(weakReference);
+                    AddSubscribers(interfaceGenericDefinition, weakReference);
                 }
             }
+        }
+
+        public void UnSubscribe(object subscriber)
+        {
+            lock (_lock)
+            {
+                foreach (var interfaceGenericDefinition in GetInterfaceGenericTypeDefinitions(subscriber.GetType()))
+                {
+                    RemoveSubscribers(interfaceGenericDefinition, new WeakReference(subscriber));
+                }
+            }
+        }
+
+        public bool IsSubscriber(object subscriber)
+        {
+            lock (_lock)
+            {
+                return GetInterfaceGenericTypeDefinitions(subscriber.GetType())
+                    .Any(id => _eventSubscribers.ContainsKey(id));
+            }
+        }
+
+        private IEnumerable<Type> GetInterfaceGenericTypeDefinitions(Type subscriberType)
+        {
+            return subscriberType.GetInterfaces().Where(i =>
+                i.IsGenericType && i.GetGenericTypeDefinition() == _subscriberType);
         }
 
         public void Publish<TEvent>(TEvent eventToPublish)
         {
             var subscriberType = _subscriberType.MakeGenericType(typeof(TEvent));
-            var subscribers = GetSubscriber(subscriberType);
+            var subscribers = GetSubscribers(subscriberType);
             var subscribersToRemove = new List<WeakReference>();
 
             foreach (var weakSubscriber in subscribers)
                 if (weakSubscriber.IsAlive)
                 {
-                    var subscriber = (ISubscriber<TEvent>) weakSubscriber.Target;
+                    var subscriber = (ISubscriber<TEvent>)weakSubscriber.Target;
                     var syncContext = SynchronizationContext.Current ?? new SynchronizationContext();
                     syncContext.Post(s => subscriber.OnEvent(eventToPublish), null);
                 }
@@ -67,7 +87,7 @@
             }
         }
 
-        private List<WeakReference> GetSubscriber(Type subscriberType)
+        private List<WeakReference> GetSubscribers(Type subscriberType)
         {
             List<WeakReference> subscribers;
             lock (_lock)
@@ -77,6 +97,30 @@
                 _eventSubscribers.Add(subscriberType, subscribers);
             }
             return subscribers;
+        }
+
+        private void RemoveSubscribers(Type subscriberType, WeakReference subscriber)
+        {
+            lock (_lock)
+            {
+                if (_eventSubscribers.TryGetValue(subscriberType, out var subscribers))
+                {
+                    subscribers.Remove(subscriber);
+                }
+            }
+        }
+
+        private void AddSubscribers(Type subscriberType, WeakReference subscriber)
+        {
+            lock (_lock)
+            {
+                if (_eventSubscribers.TryGetValue(subscriberType, out var subscribers))
+                {
+                    subscribers.Add(subscriber);
+                }
+                subscribers = new List<WeakReference> { subscriber };
+                _eventSubscribers.Add(subscriberType, subscribers);
+            }
         }
     }
 }
