@@ -1,5 +1,6 @@
 ﻿namespace Creational.Tests.FactoryMethod
 {
+    using System.Reflection;
     using Creational.FactoryMethod;
     using Xunit;
 
