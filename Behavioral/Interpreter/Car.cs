@@ -1,7 +1,6 @@
 ﻿namespace Behavioral.Interpreter
 {
     using System.Collections;
-    using System.Collections.Generic;
     using System.Linq;
 
     // Backus–Naur form (BNR) from:
@@ -37,78 +36,6 @@
             context.Output += "-";
             Doors.Interpret(context);
             context.Output += "|";
-        }
-    }
-
-    public class Wheels : List<Wheel>, Expression
-    {
-        public void Interpret(Context context)
-        {
-            context.Output += "Windows: {";
-            ForEach(w => w.Interpret(context));
-            context.Output += "} ";
-        }
-    }
-
-    public class Wheel : Expression
-    {
-        private readonly string _name;
-
-        public Wheel(string name)
-        {
-            _name = name;
-        }
-        public void Interpret(Context context)
-        {
-            context.Output += $"w: {_name} ";
-        }
-    }
-
-    public class Color : Expression
-    {
-        public string Name { get; set; }
-        public void Interpret(Context context)
-        {
-            context.Output += $"Color: {Name} ";
-        }
-    }
-
-    public class Window : Expression
-    {
-        private readonly string _name;
-
-        public Window(string name)
-        {
-            _name = name;
-        }
-
-        public void Interpret(Context context)
-        {
-            context.Output += $"Window: {_name} ";
-        }
-    }
-
-    public class Doors : List<Door>, Expression
-    {
-        public void Interpret(Context context)
-        {
-            context.Output += "Doors { ";
-            ForEach(d => d.Interpret(context));
-            context.Output += "} ";
-        }
-    }
-
-    public class Door : Expression
-    {
-        private readonly string _name;
-
-        public Door(string name)
-        {
-            _name = name;
-        }
-        public void Interpret(Context context)
-        {
-            context.Output += $"d: {_name} ";
         }
     }
 }

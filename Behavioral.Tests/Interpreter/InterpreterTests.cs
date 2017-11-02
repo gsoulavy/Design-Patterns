@@ -13,13 +13,18 @@
             {
                 new Wheel("1 tire"),
                 new Wheel("2 tire")
-            }, new Color(), new Window("conventional"), new Doors
+            }, new Black(), 
+            new BulletProof(1), 
+            new Doors
             {
-                new Door("1 butterfly"),
-                new Door("2 butterfly")
+                new Butterfly(1),
+                new Conventional(2)
             });
+
             car.Interpret(context);
-            Assert.Equal("|Windows: {w: 1 tire w: 2 tire } -Color:  -Window: conventional -Doors { d: 1 butterfly d: 2 butterfly } |", context.Output);
+            Assert.Equal(
+                "|Windows: {w: 1 tire w: 2 tire } -Color: Black -w: 1 bulletproof  -Doors { d: 1 butterfly  d: 2 conventional  } |",
+                context.Output);
         }
     }
 }
