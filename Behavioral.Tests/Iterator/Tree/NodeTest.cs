@@ -9,12 +9,14 @@
         [Fact(DisplayName = "Iterator: Tree")]
         public void IteratorTest()
         {
-            var node = new Node<int>(5);
-            node.Add(3);
-            node.Add(1);
-            node.Add(4);
-            node.Add(9);
-            node.Add(11);
+            var node = new Node<int>(5)
+            {
+                3,
+                1,
+                4,
+                9,
+                11
+            };
             Assert.NotNull(node);
 
             var values = new List<int>();
