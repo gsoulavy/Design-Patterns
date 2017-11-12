@@ -6,7 +6,7 @@
 
         public NullCar()
         {
-            Name = "Null";
+            Name = "NullCar";
         }
     }
 }

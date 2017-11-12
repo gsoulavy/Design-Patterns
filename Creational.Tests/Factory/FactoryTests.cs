@@ -24,7 +24,7 @@
         [Fact(DisplayName = "Factory: create Null")]
         public void CreateNullTest()
         {
-            var car = CarFactory.Create("BMW");
+            var car = CarFactory.Create("Lotus");
 
             Assert.Equal("NullCar", car.Name);
         }
