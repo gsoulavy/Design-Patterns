@@ -22,9 +22,9 @@
 
         public abstract int SafetyGap { get; set; }
 
-        public void Move()
+        public void Move(int location)
         {
-            throw new System.NotImplementedException();
+            Location = location;
         }
     }
 }

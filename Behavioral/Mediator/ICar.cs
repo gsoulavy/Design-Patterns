@@ -5,5 +5,6 @@
         string CarIdentifyer { get; set; }
         int Location { get; set; }
         int SafetyGap { get; set; }
+        void Move(int location);
     }
 }

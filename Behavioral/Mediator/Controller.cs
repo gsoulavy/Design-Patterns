@@ -25,9 +25,10 @@
         {
             foreach (var car in _cars)
             {
-                carWithNewLocation.Location = (car.Location - carWithNewLocation.Location) < car.SafetyGap
-                    ? car.SafetyGap
-                    : carWithNewLocation.Location;
+                if (car.Location - carWithNewLocation.Location < car.SafetyGap)
+                {
+                    carWithNewLocation.Move(car.SafetyGap);
+                }
             }
         }
     }
